@@ -20,10 +20,12 @@ ncols = [x.upper() for x in cols]
 df_dict = {}
 headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}
 st_code = 401
-while st_code != 200:
+counter = 0
+while st_code != 200 and counter < 10:
     time.sleep(2)
     res=requests.get(r"https://www.nseindia.com/api/live-analysis-variations?index=gainers",headers=headers)
     st_code = res.status_code
+    counter += 1
 if res.status_code == 200:
     gainer_dict = {}
     for val in sec_mappings.values():
@@ -39,10 +41,12 @@ if res.status_code == 200:
     df_dict['Gainers'] = gainer_dict
 looser_dict = {}
 st_code = 401
-while st_code != 200:
+counter = 0
+while st_code != 200 and counter < 10:
     time.sleep(2)
     res=requests.get(r"https://www.nseindia.com/api/live-analysis-variations?index=loosers",headers=headers)
     st_code = res.status_code
+    counter += 1
 if res.status_code == 200:
     for val in sec_mappings.values():
         df = pd.DataFrame(res.json()[val]['data'])
