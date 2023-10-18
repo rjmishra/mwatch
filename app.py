@@ -14,13 +14,19 @@ sec_mappings = {"NIFTY 50" : "NIFTY",
                 }
 
 def read_data(index):
-    gainers_df = None
-    loosers_df = None
+    gainers_df = pd.DataFrame()
+    loosers_df = pd.DataFrame()
     gainers_file = "./data/" + index + "-gainers-" + str(datetime.today().date()) + ".csv"
     loosers_file = "./data/" + index + "-loosers-" + str(datetime.today().date()) + ".csv"
     if os.path.isfile(gainers_file) and os.path.isfile(loosers_file): 
-        gainers_df = pd.read_csv(gainers_file)
-        loosers_df = pd.read_csv(loosers_file)
+        try:
+            gainers_df = pd.read_csv(gainers_file)
+        except:
+            pass
+        try:
+            loosers_df = pd.read_csv(loosers_file)
+        except:
+            pass
     else:
         headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}
         res=requests.get(r"https://www.nseindia.com/api/live-analysis-variations?index=gainers",headers=headers)
@@ -34,8 +40,14 @@ def read_data(index):
             if key != 'legends':
                 df = pd.DataFrame(res.json()[key]['data'])
                 df.to_csv('./data/' + key + "-loosers-" + str(datetime.today().date()) + ".csv", index=None)
-        gainers_df = pd.read_csv(gainers_file)
-        loosers_df = pd.read_csv(loosers_file)
+        try:
+            gainers_df = pd.read_csv(gainers_file)
+        except:
+            pass
+        try:
+            loosers_df = pd.read_csv(loosers_file)
+        except:
+            pass
     return gainers_df, loosers_df
 
 option = st.selectbox(
@@ -48,6 +60,12 @@ option = st.selectbox(
 
 gainers, loosers = read_data(sec_mappings[option])
 st.write('Top Gainers today')
-st.write(gainers)
+if gainers.shape[0] > 0:
+    st.write(gainers)
+else:
+    st.write('No gainers')
 st.write('Top Loosers today')
-st.write(loosers)
+if loosers.shape[0] > 0:
+    st.write(loosers)
+else:
+    st.write('No Loosers')
