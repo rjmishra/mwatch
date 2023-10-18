@@ -1,0 +1,8 @@
+symbol,series,open_price,high_price,low_price,ltp,prev_price,net_price,trade_quantity,turnover,market_type,ca_ex_dt,ca_purpose,perChange
+NAUKRI,EQ,4150.0,4229.0,4150.0,4215.95,4127.55,2.14,527335,22155.347223,N,28-Jul-2023,Dividend - Rs 9 Per Share,2.14
+GODREJCP,EQ,1000.0,1006.55,996.25,1002.0,997.15,0.49,569037,5699.0193624,N,05-Feb-2020,Interim Dividend - Rs 2 Per Share,0.49
+BAJAJHLDNG,EQ,6870.0,6875.0,6822.7,6869.0,6840.55,0.42,30829,2113.142976,N,28-Sep-2023,Interim Dividend - Rs 110 Per Share,0.42
+MARICO,EQ,546.3,550.5,543.65,547.6,545.6,0.37,1087928,5969.1345576,N,08-Mar-2023,Interim Dividend - Rs 4.50 Per Share,0.37
+SHREECEM,EQ,26700.05,26915.3,26517.0,26666.8,26631.7,0.13,21199,5673.2700202999995,N,01-Jun-2023,Interim Dividend - Rs 55 Per Share,0.13
+HAL,EQ,1965.0,1984.05,1950.0,1965.0,1963.7,0.07,753542,14834.3785204,N,28-Sep-2023,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,0.07
+VEDL,EQ,230.1,232.5,228.3,230.0,229.95,0.02,5782405,13329.600005999999,N,06-Jul-2023,Annual General Meeting,0.02
